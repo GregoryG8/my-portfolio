@@ -1,28 +1,37 @@
 /*#1f4fc7*/
 
 :root {
-    --primary-color: #3f87f2 ;
-    --primary-hover-color: #2969e7;
-    --secondary-color: #182753;
-    --secondary-hover-color: #2145ac;
-    --background-color: #eff6ff;
-    --text-color: #182753;
-  }
-  
-  .primary-color {
-    color: var(--primary-color);
-  }
-  
-  .primary-background {
-    color: var(--primary-color);
-    color: #eff6ff;
-  }
-  
-  .secondary-color {
-    color: var(--secondary-color);
-  }
-  
-  .secondary-background {
-    color: var(--secondary-color);
-    color: #eff6ff;
-  }
+  --primary-color: #3f87f2;
+  --primary-hover-color: #2969e7;
+  --secondary-color: #182753;
+  --secondary-hover-color: #2145ac;
+  --background-color: #eff6ff;
+  --text-color: #182753;
+}
+
+.dark-mode {
+  --primary-color: #82aaff;
+  --primary-hover-color: #4a8ef7;
+  --secondary-color: #1e1e2f;
+  --secondary-hover-color: #3b5998;
+  --background-color: #121212;
+  --text-color: #ffffff;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.primary-background {
+  color: var(--primary-color);
+  color: #eff6ff;
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.secondary-background {
+  color: var(--secondary-color);
+  color: #eff6ff;
+}

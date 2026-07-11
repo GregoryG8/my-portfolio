@@ -1,12 +1,9 @@
-import React from "react";
-import NavBar from "../../components/NavBar/NavBar";
+import React, { useEffect, useMemo, useState } from "react";
 import { ReactTyped as Typed } from "react-typed";
-import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-// import { loadAll } from "@tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
+import { loadSlim } from "@tsparticles/slim";
+
+import NavBar from "../../components/NavBar/NavBar";
 
 import "./Home.css";
 
@@ -16,21 +13,13 @@ function Home() {
   // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
       await loadSlim(engine);
-      //await loadBasic(engine);
     }).then(() => {
       setInit(true);
     });
   }, []);
 
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesLoaded = () => undefined;
 
   const options = useMemo(
     () => ({
@@ -104,16 +93,16 @@ function Home() {
   );
   if (init) {
     return (
-      <div style={{ overflow: "hidden" }}>
+      <main className="home">
         <NavBar />
-        <div className="text-container">
+        <section className="text-container" aria-label="Presentación principal">
           <Particles
             id="tsparticles"
             className="particles"
             particlesLoaded={particlesLoaded}
             options={options}
           />
-          <div className="text-title">
+          <h1 className="text-title">
             <Typed
               strings={["Hi, I'm Gregory Gonzalez"]}
               typeSpeed={50}
@@ -124,14 +113,14 @@ function Home() {
               showCursor={false}
               className="title-typed"
             />
-          </div>
-          <div>
+          </h1>
+          <p className="text-description">
             <Typed
               strings={[
                 "I'm a passionate Software Developer!",
                 "I love creating stunning Frontend experiences.",
                 "Let's turn ideas into reality together!",
-                "Frontend Developer | Development Enthusiast | Lifelong Learner | Problem Solver",
+                "Full Stack Developer | Development Enthusiast | Lifelong Learner | Problem Solver",
                 "Welcome to my portfolio!",
               ]}
               typeSpeed={30}
@@ -143,12 +132,12 @@ function Home() {
               cursorChar="|"
               className="text-typed"
             />
-          </div>
-        </div>
-      </div>
+          </p>
+        </section>
+      </main>
     );
   }
-  return <></>;
+  return null;
 }
 
 export default Home;
