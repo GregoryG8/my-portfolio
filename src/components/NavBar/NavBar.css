@@ -6,6 +6,12 @@
   background-image: linear-gradient(to bottom, #63a9f7 , #95c7fb, #c0dcfd,  #dcebfd, #eff6ff, #fff);
 }
 
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .logo-navbar {
   appearance: none;
   border: 0;
