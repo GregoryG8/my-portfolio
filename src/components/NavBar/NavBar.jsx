@@ -4,11 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Divide as Hamburger } from "hamburger-react";
 import { useGlitch } from "react-powerglitch";
 import { FaSpider } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
+import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import "./NavBar.css";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -28,23 +31,26 @@ const NavBar = () => {
   });
 
   return (
-    <nav className="navbar" aria-label="Main navigation">
+    <nav className="navbar" aria-label={t("nav.mainNavigation")}>
       <button
         type="button"
         ref={glitch.ref}
         className="logo-navbar"
         onClick={() => navigate("/")}
-        aria-label="Go to home"
+        aria-label={t("nav.goToHome")}
       >
         <FaSpider className="spider-icon" size={60} color="#182753" />
       </button>
       <div className={`navigation ${isMenuOpen ? "show" : "hidden"}`}>
-        <NavigationLink to="/" text="About" />
-        <NavigationLink to="/" text="Experience" />
-        <NavigationLink to="/" text="Projects" />
-        <NavigationLink to="/" text="Contact me" />
+        <NavigationLink to="/" text={t("nav.about")} />
+        <NavigationLink to="/" text={t("nav.experience")} />
+        <NavigationLink to="/" text={t("nav.projects")} />
+        <NavigationLink to="/" text={t("nav.contact")} />
       </div>
-      <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} />
+      <div className="navbar-actions">
+        <LanguageToggle />
+        <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} />
+      </div>
     </nav>
   );
 };

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { ReactTyped as Typed } from "react-typed";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { useTranslation } from "react-i18next";
 
 import NavBar from "../../components/NavBar/NavBar";
 
@@ -9,6 +10,7 @@ import "./Home.css";
 
 function Home() {
   const [init, setInit] = useState(false);
+  const { t } = useTranslation();
 
   // this should be run only once per application lifetime
   useEffect(() => {
@@ -95,7 +97,7 @@ function Home() {
     return (
       <main className="home">
         <NavBar />
-        <section className="text-container" aria-label="Presentación principal">
+        <section className="text-container" aria-label={t("home.mainSection")}> 
           <Particles
             id="tsparticles"
             className="particles"
@@ -104,7 +106,7 @@ function Home() {
           />
           <h1 className="text-title">
             <Typed
-              strings={["Hi, I'm Gregory Gonzalez"]}
+              strings={[t("home.title")]}
               typeSpeed={50}
               backSpeed={30}
               startDelay={1000}
@@ -117,11 +119,11 @@ function Home() {
           <p className="text-description">
             <Typed
               strings={[
-                "I'm a passionate Software Developer!",
-                "I love creating stunning Frontend experiences.",
-                "Let's turn ideas into reality together!",
-                "Full Stack Developer | Development Enthusiast | Lifelong Learner | Problem Solver",
-                "Welcome to my portfolio!",
+                t("home.subtitle.0"),
+                t("home.subtitle.1"),
+                t("home.subtitle.2"),
+                t("home.subtitle.3"),
+                t("home.subtitle.4"),
               ]}
               typeSpeed={30}
               backSpeed={30}
