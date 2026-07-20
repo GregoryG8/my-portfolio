@@ -4,11 +4,9 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { useTranslation } from "react-i18next";
 
-import NavBar from "../../components/NavBar/NavBar";
-
 import "./Home.css";
 
-function Home() {
+const Home = () => {
   const [init, setInit] = useState(false);
   const { t } = useTranslation();
 
@@ -96,7 +94,6 @@ function Home() {
   if (init) {
     return (
       <main className="home">
-        <NavBar />
         <section className="text-container" aria-label={t("home.mainSection")}> 
           <Particles
             id="tsparticles"
@@ -140,6 +137,6 @@ function Home() {
     );
   }
   return null;
-}
+};
 
 export default Home;

@@ -23,6 +23,9 @@ const resources = {
         projects: "Projects",
         contact: "Contact me",
       },
+      footer: {
+        text: "By Gregory Gonzalez © 2026.",
+      },
       languageToggle: {
         label: "English",
         switchTo: "Switch to Spanish",
@@ -49,6 +52,9 @@ const resources = {
         experience: "Experiencia",
         projects: "Proyectos",
         contact: "Contáctame",
+      },
+      footer: {
+        text: "Hecho por Gregory Gonzalez © 2026.",
       },
       languageToggle: {
         label: "Español",
