@@ -48,7 +48,7 @@ const resources = {
         },
         info: {
           emailTitle: "Email",
-          emailValue: "hello@gregorygonzalez.dev",
+          emailValue: "gregory.gonzalez.martinez2@gmail.com",
           locationTitle: "Location",
           locationValue: "Available Remote Worldwide",
         },
@@ -108,7 +108,7 @@ const resources = {
         },
         info: {
           emailTitle: "Email",
-          emailValue: "hello@gregorygonzalez.dev",
+          emailValue: "gregory.gonzalez.martinez2@gmail.com",
           locationTitle: "Ubicación",
           locationValue: "Disponible Remoto Mundial",
         },
