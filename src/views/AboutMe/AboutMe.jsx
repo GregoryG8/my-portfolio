@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useTranslation } from "react-i18next";
-import { FiUser, FiCode, FiDownload } from "react-icons/fi";
+import { FiUser, FiCode } from "react-icons/fi";
 import { FiBookOpen, FiAward } from "react-icons/fi";
 import {
   SiReact,
@@ -50,16 +50,10 @@ const SKILLS = [
 ];
 
 const AboutMe = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const education = t("aboutMe.education.items", { returnObjects: true });
   const interests = t("aboutMe.interests.items", { returnObjects: true });
-
-  const isSpanish = i18n.language === "es";
-  const cvHref = isSpanish ? "/cv-es.pdf" : "/cv-en.pdf";
-  const cvDownload = isSpanish
-    ? "CV_Gregory_Gonzalez_ES.pdf"
-    : "CV_Gregory_Gonzalez_EN.pdf";
 
   return (
     <section className="about-me" aria-label={t("aboutMe.sectionLabel")}>
@@ -85,25 +79,6 @@ const AboutMe = () => {
                 loading="lazy"
               />
             </div>
-          </div>
-
-          <div className="about-me__cta">
-            <a
-              href={cvHref}
-              download={cvDownload}
-              className="about-me__cv-link"
-              aria-label={t("aboutMe.cv.ariaLabel")}
-            >
-              <FiDownload
-                className="about-me__cv-icon"
-                aria-hidden="true"
-                focusable="false"
-              />
-              {t("aboutMe.cv.text")}
-              <span className="sr-only">
-                {t("aboutMe.cv.srDetail")}
-              </span>
-            </a>
           </div>
         </div>
 

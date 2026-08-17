@@ -90,6 +90,45 @@
 }
 
 /* ============================================
+   Resume Button
+   ============================================ */
+
+.navbar-resume {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  min-height: 40px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: #ffffff;
+  background: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.navbar-resume:hover {
+  background: transparent;
+  color: var(--secondary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 39, 83, 0.15);
+}
+
+.navbar-resume:active {
+  transform: translateY(0);
+}
+
+.navbar-resume:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* ============================================
    Hamburger Button
    ============================================ */
 
@@ -136,6 +175,15 @@
   .navbar-hamburger {
     display: flex;
     align-items: center;
+  }
+
+  .navbar-resume {
+    padding: 0.5rem 0.75rem;
+    min-height: 36px;
+  }
+
+  .navbar-resume__text {
+    display: none;
   }
 
   .navigation.hidden {

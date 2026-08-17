@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Divide as Hamburger } from "hamburger-react";
 import { useGlitch } from "react-powerglitch";
 import { FaSpider } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 
 import LanguageToggle from "../LanguageToggle/LanguageToggle";
@@ -10,10 +11,16 @@ import "./NavBar.css";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navRef = useRef(null);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const isSpanish = i18n.language === "es";
+  const cvHref = isSpanish ? "/cv-es.pdf" : "/cv-en.pdf";
+  const cvDownload = isSpanish
+    ? "CV_Gregory_Gonzalez_ES.pdf"
+    : "CV_Gregory_Gonzalez_EN.pdf";
 
   const glitch = useGlitch({
     playMode: "hover",
@@ -94,6 +101,16 @@ const NavBar = () => {
       </ul>
 
       <div className="navbar-actions">
+        <a
+          href={cvHref}
+          download={cvDownload}
+          className="navbar-resume"
+          aria-label={t("nav.cv.ariaLabel")}
+        >
+          <FiDownload aria-hidden="true" focusable="false" />
+          <span className="navbar-resume__text">{t("nav.cv.text")}</span>
+          <span className="sr-only">{t("nav.cv.srDetail")}</span>
+        </a>
         <LanguageToggle />
         <div
           aria-label={isMenuOpen ? t("a11y.menuClose") : t("a11y.menuOpen")}
