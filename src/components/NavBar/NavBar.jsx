@@ -72,7 +72,7 @@ const NavBar = () => {
         role="list"
       >
         <li>
-          <Link className="navbar-item" to="/" onClick={() => setIsMenuOpen(false)}>
+          <Link className="navbar-item" to="/about" onClick={() => setIsMenuOpen(false)}>
             {t("nav.about")}
           </Link>
         </li>
