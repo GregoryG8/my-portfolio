@@ -37,6 +37,21 @@ const NavBar = () => {
     },
   });
 
+  const resumeGlitch = useGlitch({
+    playMode: "hover",
+    createContainers: true,
+    hideOverflow: false,
+    timing: {
+      duration: 350,
+      iterations: 1,
+      easing: "ease-in-out",
+    },
+    glitchTimeSpan: {
+      start: 0.2,
+      end: 0.6,
+    },
+  });
+
   // Close menu on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -102,6 +117,7 @@ const NavBar = () => {
 
       <div className="navbar-actions">
         <a
+          ref={resumeGlitch.ref}
           href={cvHref}
           download={cvDownload}
           className="navbar-resume"
