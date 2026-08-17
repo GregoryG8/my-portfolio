@@ -1,9 +1,23 @@
+/* ============================================
+   NavBar - Base Layout
+   ============================================ */
+
 .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 1.2rem 0;
-  background-image: linear-gradient(to bottom, #63a9f7 , #95c7fb, #c0dcfd,  #dcebfd, #eff6ff, #fff);
+  padding: 1.2rem 2rem;
+  background-image: linear-gradient(
+    to bottom,
+    #63a9f7,
+    #95c7fb,
+    #c0dcfd,
+    #dcebfd,
+    #eff6ff,
+    #fff
+  );
+  position: relative;
+  z-index: 100;
 }
 
 .navbar-actions {
@@ -20,10 +34,27 @@
   padding: 0;
 }
 
+.logo-navbar:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+/* ============================================
+   Navigation List
+   ============================================ */
+
 .navigation {
   display: flex;
   width: 50%;
   justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  display: flex;
 }
 
 .navbar-item {
@@ -32,6 +63,7 @@
   text-decoration: none;
   color: var(--text-color);
   overflow: hidden;
+  font-weight: 500;
 }
 
 .navbar-item::after {
@@ -47,19 +79,65 @@
   transition: transform 0.5s;
 }
 
-.navbar-item:hover::after {
+.navbar-item:hover::after,
+.navbar-item:focus-visible::after {
   transform: scaleX(1);
 }
 
+.navbar-item:focus-visible {
+  outline: none;
+  color: var(--primary-color);
+}
 
-@media (min-width: 769px) {
+/* ============================================
+   Hamburger Button
+   ============================================ */
 
-  .hamburger-react {
-    display: none;
+.navbar-hamburger {
+  display: none;
+}
+
+.navbar-hamburger:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   Responsive - Tablet (769px - 1024px)
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .navigation {
+    width: 55%;
+    gap: 0.5rem;
+  }
+
+  .navbar-item {
+    font-size: 0.9rem;
+    padding: 8px;
   }
 }
 
+/* ============================================
+   Responsive - Mobile (max 768px)
+   ============================================ */
+
 @media (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+    align-items: center;
+  }
+
   .navigation.hidden {
     display: none;
     opacity: 0;
@@ -67,40 +145,56 @@
 
   .navigation.show {
     position: absolute;
-    top: 102px;
+    top: 100%;
+    left: 0;
     display: flex;
     opacity: 1;
     width: 100%;
     flex-direction: column;
     align-items: center;
-    -webkit-animation: slide-in-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-      both;
-    animation: slide-in-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    background-color: white;
+    padding: 1rem 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: slide-in-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 
-  @-webkit-keyframes slide-in-top {
-    0% {
-      -webkit-transform: translateY(-1000px);
-      transform: translateY(-1000px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0);
-      opacity: 1;
-    }
+  .navigation.show li {
+    width: 100%;
+    text-align: center;
   }
-  @keyframes slide-in-top {
-    0% {
-      -webkit-transform: translateY(-1000px);
-      transform: translateY(-1000px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0);
-      opacity: 1;
-    }
+
+  .navigation.show .navbar-item {
+    display: block;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ============================================
+   Responsive - Small phones (max 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo-navbar .spider-icon {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

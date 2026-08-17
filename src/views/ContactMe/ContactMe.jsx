@@ -17,7 +17,7 @@ const ContactMe = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [toast, setToast] = useState(null); // { type: 'success' | 'error', message: '' }
+  const [toast, setToast] = useState(null);
 
   useEffect(() => {
     if (toast) {
@@ -71,7 +71,11 @@ const ContactMe = () => {
             <p className="contact-me__subtitle">{t("contact.subtitle")}</p>
           </header>
 
-          <form className="contact-me__form" onSubmit={handleSubmit}>
+          <form
+            className="contact-me__form"
+            onSubmit={handleSubmit}
+            aria-busy={isLoading}
+          >
             <div className="contact-me__form-row">
               <div className="contact-me__field">
                 <label htmlFor="contact-name">{t("contact.form.name")}</label>
@@ -84,6 +88,7 @@ const ContactMe = () => {
                   onChange={handleChange}
                   disabled={isLoading}
                   required
+                  aria-required="true"
                 />
               </div>
               <div className="contact-me__field">
@@ -97,6 +102,7 @@ const ContactMe = () => {
                   onChange={handleChange}
                   disabled={isLoading}
                   required
+                  aria-required="true"
                 />
               </div>
             </div>
@@ -114,6 +120,7 @@ const ContactMe = () => {
                 onChange={handleChange}
                 disabled={isLoading}
                 required
+                aria-required="true"
               />
             </div>
 
@@ -121,16 +128,17 @@ const ContactMe = () => {
               type="submit"
               className="contact-me__submit"
               disabled={isLoading}
+              aria-busy={isLoading}
             >
               {isLoading ? (
                 <>
                   {t("contact.form.sending")}
-                  <span className="contact-me__spinner" />
+                  <span className="contact-me__spinner" aria-hidden="true" />
                 </>
               ) : (
                 <>
                   {t("contact.form.send")}{" "}
-                  <FiSend className="contact-me__send-icon" />
+                  <FiSend className="contact-me__send-icon" aria-hidden="true" />
                 </>
               )}
             </button>
@@ -138,8 +146,12 @@ const ContactMe = () => {
 
           {/* Loading overlay */}
           {isLoading && (
-            <div className="contact-me__loading-overlay" aria-live="polite">
-              <div className="contact-me__loading-spinner" />
+            <div
+              className="contact-me__loading-overlay"
+              role="status"
+              aria-live="polite"
+            >
+              <div className="contact-me__loading-spinner" aria-hidden="true" />
               <p className="contact-me__loading-text">
                 {t("contact.loading")}
               </p>
@@ -150,7 +162,7 @@ const ContactMe = () => {
         {/* Right column - Info cards + Social */}
         <aside className="contact-me__info-column">
           <div className="contact-me__info-card">
-            <span className="contact-me__info-icon">
+            <span className="contact-me__info-icon" aria-hidden="true">
               <FiMail />
             </span>
             <h3>{t("contact.info.emailTitle")}</h3>
@@ -158,7 +170,7 @@ const ContactMe = () => {
           </div>
 
           <div className="contact-me__info-card">
-            <span className="contact-me__info-icon">
+            <span className="contact-me__info-icon" aria-hidden="true">
               <FiMapPin />
             </span>
             <h3>{t("contact.info.locationTitle")}</h3>
@@ -169,15 +181,16 @@ const ContactMe = () => {
             <h4 className="contact-me__social-title">
               {t("contact.social.title")}
             </h4>
-            <div className="contact-me__social-links">
+            <div className="contact-me__social-links" role="list">
               <a
                 href="https://www.linkedin.com/in/gregory-gonzalez-martinez/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-me__social-link"
                 aria-label="LinkedIn"
+                role="listitem"
               >
-                <FiLinkedin />
+                <FiLinkedin aria-hidden="true" />
               </a>
               <a
                 href="https://github.com/GregoryG8"
@@ -185,8 +198,9 @@ const ContactMe = () => {
                 rel="noopener noreferrer"
                 className="contact-me__social-link"
                 aria-label="GitHub"
+                role="listitem"
               >
-                <FiGithub />
+                <FiGithub aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -200,7 +214,7 @@ const ContactMe = () => {
           role="alert"
           aria-live="assertive"
         >
-          <span className="contact-me__toast-icon">
+          <span className="contact-me__toast-icon" aria-hidden="true">
             {toast.type === "success" ? <FiCheck /> : <FiX />}
           </span>
           <span className="contact-me__toast-message">{toast.message}</span>
@@ -208,9 +222,9 @@ const ContactMe = () => {
             type="button"
             className="contact-me__toast-close"
             onClick={() => setToast(null)}
-            aria-label="Close"
+            aria-label={t("contact.toast.close")}
           >
-            <FiX />
+            <FiX aria-hidden="true" />
           </button>
         </div>
       )}

@@ -21,8 +21,8 @@ const Footer = () => {
       easing: "ease-in-out",
     },
     glitchTimeSpan: {
-      start: 0.20,
-      end: 0.70,
+      start: 0.2,
+      end: 0.7,
     },
   });
 
@@ -36,13 +36,13 @@ const Footer = () => {
       easing: "ease-in-out",
     },
     glitchTimeSpan: {
-      start: 0.20,
-      end: 0.70,
+      start: 0.2,
+      end: 0.7,
     },
   });
 
   return (
-    <footer className="footer" aria-label={t("nav.mainNavigation")}>
+    <footer className="footer" aria-label={t("footer.label")}>
       <div className="footer-content-logo">
         <button
           type="button"
@@ -51,13 +51,13 @@ const Footer = () => {
           onClick={() => navigate("/")}
           aria-label={t("nav.goToHome")}
         >
-          <FaSpider className="spider-icon" size={60} color="#182753" />
+          <FaSpider className="spider-icon" size={60} color="#182753" aria-hidden="true" />
         </button>
         <p className="footer-title" ref={titleGlitch.ref}>
           Gregory Gonzalez
         </p>
       </div>
-      
+
       <div className="footer-content">
         <p>{t("footer.text")}</p>
       </div>
@@ -66,5 +66,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-

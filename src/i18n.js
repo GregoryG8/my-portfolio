@@ -24,6 +24,7 @@ const resources = {
         contact: "Contact me",
       },
       footer: {
+        label: "Site footer",
         text: "By Gregory Gonzalez © 2026.",
       },
       contact: {
@@ -45,6 +46,7 @@ const resources = {
         toast: {
           success: "Message sent successfully! I'll get back to you soon.",
           error: "Something went wrong. Please try again later.",
+          close: "Close notification",
         },
         info: {
           emailTitle: "Email",
@@ -59,6 +61,11 @@ const resources = {
       languageToggle: {
         label: "English",
         switchTo: "Switch to Spanish",
+      },
+      a11y: {
+        skipToContent: "Skip to main content",
+        menuOpen: "Open menu",
+        menuClose: "Close menu",
       },
     },
   },
@@ -84,6 +91,7 @@ const resources = {
         contact: "Contáctame",
       },
       footer: {
+        label: "Pie de página",
         text: "Hecho por Gregory Gonzalez © 2026.",
       },
       contact: {
@@ -105,6 +113,7 @@ const resources = {
         toast: {
           success: "¡Mensaje enviado con éxito! Te responderé pronto.",
           error: "Algo salió mal. Por favor intenta de nuevo más tarde.",
+          close: "Cerrar notificación",
         },
         info: {
           emailTitle: "Email",
@@ -119,6 +128,11 @@ const resources = {
       languageToggle: {
         label: "Español",
         switchTo: "Cambiar a inglés",
+      },
+      a11y: {
+        skipToContent: "Saltar al contenido principal",
+        menuOpen: "Abrir menú",
+        menuClose: "Cerrar menú",
       },
     },
   },

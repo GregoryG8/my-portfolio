@@ -33,6 +33,7 @@
 
 .contact-me__form-column {
   flex: 1.2;
+  position: relative;
   background: #ffffff;
   border-radius: 16px;
   padding: 2.5rem;
@@ -106,9 +107,17 @@
 
 .contact-me__field input::placeholder,
 .contact-me__field textarea::placeholder {
-  color: #aaa;
+  color: #999;
 }
 
+.contact-me__field input:focus-visible,
+.contact-me__field textarea:focus-visible {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(63, 135, 242, 0.15);
+}
+
+/* Keep :focus for browsers without :focus-visible support */
 .contact-me__field input:focus,
 .contact-me__field textarea:focus {
   outline: none;
@@ -131,11 +140,17 @@
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
   margin-top: 0.5rem;
+  border-radius: 8px;
 }
 
-.contact-me__submit:hover {
+.contact-me__submit:hover:not(:disabled) {
   color: var(--primary-color);
   transform: translateX(4px);
+}
+
+.contact-me__submit:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 .contact-me__send-icon {
@@ -168,6 +183,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  background: #e8f4fc;
   color: var(--primary-color);
   font-size: 1.2rem;
   margin-bottom: 0.25rem;
@@ -199,9 +215,11 @@
 }
 
 .contact-me__social-title {
-  font-size: 1.15rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #555;
   margin: 0 0 1rem 0;
 }
 
@@ -230,49 +248,14 @@
   border-color: var(--primary-color);
 }
 
-/* ============================================
-   Responsive - Mobile
-   ============================================ */
-
-@media (max-width: 768px) {
-  .contact-me {
-    padding: 2rem 1rem;
-  }
-
-  .contact-me__wrapper {
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  .contact-me__form-column {
-    padding: 1.75rem;
-  }
-
-  .contact-me__title {
-    font-size: 2rem;
-  }
-
-  .contact-me__form-row {
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  .contact-me__submit {
-    align-self: flex-start;
-  }
-
-  .contact-me__info-column {
-    padding: 0 0.5rem;
-  }
+.contact-me__social-link:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 /* ============================================
    Loading State
    ============================================ */
-
-.contact-me__form-column {
-  position: relative;
-}
 
 .contact-me__submit:disabled {
   cursor: not-allowed;
@@ -414,6 +397,12 @@
   opacity: 1;
 }
 
+.contact-me__toast-close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  opacity: 1;
+}
+
 @keyframes toast-slide-in {
   from {
     transform: translateX(100%);
@@ -425,11 +414,103 @@
   }
 }
 
+/* ============================================
+   Responsive - Tablet (max 1024px)
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .contact-me {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .contact-me__wrapper {
+    gap: 2.5rem;
+  }
+
+  .contact-me__form-column {
+    padding: 2rem;
+  }
+
+  .contact-me__title {
+    font-size: 2.5rem;
+  }
+}
+
+/* ============================================
+   Responsive - Mobile (max 768px)
+   ============================================ */
+
 @media (max-width: 768px) {
+  .contact-me {
+    padding: 2rem 1rem;
+  }
+
+  .contact-me__wrapper {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .contact-me__form-column {
+    padding: 1.75rem;
+  }
+
+  .contact-me__title {
+    font-size: 2rem;
+  }
+
+  .contact-me__form-row {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .contact-me__submit {
+    align-self: flex-start;
+  }
+
+  .contact-me__info-column {
+    padding: 0 0.5rem;
+  }
+
   .contact-me__toast {
     bottom: 1rem;
     right: 1rem;
     left: 1rem;
     max-width: none;
+  }
+}
+
+/* ============================================
+   Responsive - Small phones (max 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+  .contact-me {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .contact-me__form-column {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .contact-me__title {
+    font-size: 1.75rem;
+  }
+
+  .contact-me__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .contact-me__field input,
+  .contact-me__field textarea {
+    font-size: 1rem;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .contact-me__toast {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    left: 0.75rem;
+    padding: 0.75rem 1rem;
   }
 }

@@ -10,7 +10,6 @@ const Home = () => {
   const [init, setInit] = useState(false);
   const { t } = useTranslation();
 
-  // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
@@ -91,16 +90,18 @@ const Home = () => {
     }),
     []
   );
+
   if (init) {
     return (
-      <main className="home">
-        <section className="text-container" aria-label={t("home.mainSection")}> 
-          <Particles
-            id="tsparticles"
-            className="particles"
-            particlesLoaded={particlesLoaded}
-            options={options}
-          />
+      <section className="home" aria-label={t("home.mainSection")}>
+        <Particles
+          id="tsparticles"
+          className="particles"
+          particlesLoaded={particlesLoaded}
+          options={options}
+          aria-hidden="true"
+        />
+        <div className="text-container">
           <h1 className="text-title">
             <Typed
               strings={[t("home.title")]}
@@ -113,7 +114,7 @@ const Home = () => {
               className="title-typed"
             />
           </h1>
-          <p className="text-description">
+          <p className="text-description" aria-live="polite" aria-atomic="true">
             <Typed
               strings={[
                 t("home.subtitle.0"),
@@ -132,10 +133,11 @@ const Home = () => {
               className="text-typed"
             />
           </p>
-        </section>
-      </main>
+        </div>
+      </section>
     );
   }
+
   return null;
 };
 
