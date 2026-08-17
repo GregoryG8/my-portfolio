@@ -1,53 +1,134 @@
+/* ============================================
+   Home - Base Layout
+   ============================================ */
 
 .home {
-    min-height: 100vh;
-    overflow: hidden;
-    position: relative;
+  min-height: calc(100vh - 120px);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.text-container{
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    padding: 5% 3% 5% 5%;
-    overflow-y: hidden;
+.text-container {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  padding: 5% 3% 5% 5%;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 1;
 }
 
-.text-title{
-    width: 50%;
-    margin: 0;
-
+.text-title {
+  width: 60%;
+  margin: 0;
 }
 
 .text-description {
-    margin: 0;
+  margin: 0.5rem 0 0;
 }
 
 .title-typed {
-    font-size: 6rem;
-    color: var(--text-color);
-    font-weight: 700;
+  font-size: 5rem;
+  color: var(--text-color);
+  font-weight: 700;
+  line-height: 1.15;
 }
 
-.text-typed{
+.text-typed {
+  font-size: 1.75rem;
+  color: var(--text-color);
+  line-height: 1.4;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* ============================================
+   Responsive - Large desktop (min 1440px)
+   ============================================ */
+
+@media (min-width: 1440px) {
+  .title-typed {
+    font-size: 5.5rem;
+  }
+
+  .text-typed {
     font-size: 2rem;
-    color: var(--text-color);
+  }
 }
 
-.particles{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
+/* ============================================
+   Responsive - Tablet (max 1024px)
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .text-container {
+    width: 90%;
+    padding: 4% 3%;
+  }
+
+  .text-title {
+    width: 70%;
+  }
+
+  .title-typed {
+    font-size: 4rem;
+  }
+
+  .text-typed {
+    font-size: 1.5rem;
+  }
 }
+
+/* ============================================
+   Responsive - Mobile (max 768px)
+   ============================================ */
 
 @media (max-width: 768px) {
-    .title-typed {
-        font-size: 4.5rem;
-    }
+  .text-container {
+    width: 100%;
+    padding: 3rem 1.5rem;
+  }
 
-    .text-typed{
-        font-size: 2rem;
-    }
+  .text-title {
+    width: 100%;
+  }
+
+  .title-typed {
+    font-size: 3rem;
+  }
+
+  .text-typed {
+    font-size: 1.25rem;
+  }
+}
+
+/* ============================================
+   Responsive - Small phones (max 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+  .home {
+    min-height: calc(100vh - 100px);
+  }
+
+  .text-container {
+    padding: 2rem 1rem;
+  }
+
+  .title-typed {
+    font-size: 2.25rem;
+  }
+
+  .text-typed {
+    font-size: 1rem;
+  }
 }
