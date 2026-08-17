@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
 import Home from "./views/Home/Home";
+import ContactMe from "./views/ContactMe/ContactMe";
 
 const App = () => {
   return (
@@ -11,6 +12,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+        </Route>
+        <Route path="/contact" element={<Layout />}>
+          <Route index element={<ContactMe />} />
         </Route>
       </Routes>
     </BrowserRouter>

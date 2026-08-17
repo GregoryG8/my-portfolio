@@ -26,6 +26,36 @@ const resources = {
       footer: {
         text: "By Gregory Gonzalez © 2026.",
       },
+      contact: {
+        sectionLabel: "Contact section",
+        title: "Let's Connect",
+        subtitle:
+          "I'm currently available for freelance projects and full-time opportunities. If you have a project that needs some digital precision, drop me a line.",
+        form: {
+          name: "Name",
+          namePlaceholder: "John Doe",
+          email: "Email",
+          emailPlaceholder: "john@example.com",
+          message: "Message",
+          messagePlaceholder: "Tell me about your project...",
+          send: "Send Message",
+          sending: "Sending...",
+        },
+        loading: "Sending your message, please wait...",
+        toast: {
+          success: "Message sent successfully! I'll get back to you soon.",
+          error: "Something went wrong. Please try again later.",
+        },
+        info: {
+          emailTitle: "Email",
+          emailValue: "hello@gregorygonzalez.dev",
+          locationTitle: "Location",
+          locationValue: "Available Remote Worldwide",
+        },
+        social: {
+          title: "Social Presence",
+        },
+      },
       languageToggle: {
         label: "English",
         switchTo: "Switch to Spanish",
@@ -55,6 +85,36 @@ const resources = {
       },
       footer: {
         text: "Hecho por Gregory Gonzalez © 2026.",
+      },
+      contact: {
+        sectionLabel: "Sección de contacto",
+        title: "Conectemos",
+        subtitle:
+          "Actualmente estoy disponible para proyectos freelance y oportunidades a tiempo completo. Si tienes un proyecto que necesita precisión digital, escríbeme.",
+        form: {
+          name: "Nombre",
+          namePlaceholder: "John Doe",
+          email: "Email",
+          emailPlaceholder: "john@example.com",
+          message: "Mensaje",
+          messagePlaceholder: "Cuéntame sobre tu proyecto...",
+          send: "Enviar Mensaje",
+          sending: "Enviando...",
+        },
+        loading: "Enviando tu mensaje, por favor espera...",
+        toast: {
+          success: "¡Mensaje enviado con éxito! Te responderé pronto.",
+          error: "Algo salió mal. Por favor intenta de nuevo más tarde.",
+        },
+        info: {
+          emailTitle: "Email",
+          emailValue: "hello@gregorygonzalez.dev",
+          locationTitle: "Ubicación",
+          locationValue: "Disponible Remoto Mundial",
+        },
+        social: {
+          title: "Redes Sociales",
+        },
       },
       languageToggle: {
         label: "Español",
