@@ -45,7 +45,7 @@ const NavBar = () => {
         <NavigationLink to="/" text={t("nav.about")} />
         <NavigationLink to="/" text={t("nav.experience")} />
         <NavigationLink to="/" text={t("nav.projects")} />
-        <NavigationLink to="/" text={t("nav.contact")} />
+        <NavigationLink to="/contact" text={t("nav.contact")} />
       </div>
       <div className="navbar-actions">
         <LanguageToggle />
