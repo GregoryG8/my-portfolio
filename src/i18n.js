@@ -62,6 +62,45 @@ const resources = {
         label: "English",
         switchTo: "Switch to Spanish",
       },
+      aboutMe: {
+        sectionLabel: "About me section",
+        title: "About Me",
+        imageAlt: "Gregory Gonzalez Martinez profile photo",
+        description: [
+          "FullStack Developer (Systems Technologist) with experience building scalable web architectures, designing RESTful APIs, and creating modern interfaces. Specialized in Node.js (Express), Java (Spring), TypeScript, React, and Vue, along with relational database management (PostgreSQL, MySQL).",
+          "Known for leading frontend teams, developing Design Systems, optimizing client-server communication, and debugging legacy code in high-impact environments. I thrive where technical precision meets creative problem-solving.",
+        ],
+        cv: {
+          text: "Download CV",
+          ariaLabel: "Download Curriculum Vitae in PDF format",
+          srDetail: "(PDF file, approximately 150 KB)",
+        },
+        skills: {
+          title: "Technical Arsenal",
+          label: "List of technical skills",
+        },
+        education: {
+          title: "Education",
+          items: [
+            {
+              degree: "Systems Information Technology",
+              school: "Universidad del Valle",
+              year: "2018 - 2023",
+            },
+          ],
+        },
+        interests: {
+          title: "Certifications",
+          items: [
+            { emoji: "🎓", name: "Meta Front-End Developer" },
+            { emoji: "🟢", name: "Node & Express Essentials - IBM" },
+            { emoji: "⚛️", name: "Front-End Apps with React - IBM" },
+            { emoji: "🐍", name: "Python - University of Michigan" },
+            { emoji: "📜", name: "JavaScript Essentials - IBM" },
+            { emoji: "🔄", name: "Scrum Fundamentals Certified" },
+          ],
+        },
+      },
       a11y: {
         skipToContent: "Skip to main content",
         menuOpen: "Open menu",
@@ -128,6 +167,45 @@ const resources = {
       languageToggle: {
         label: "Español",
         switchTo: "Cambiar a inglés",
+      },
+      aboutMe: {
+        sectionLabel: "Sección sobre mí",
+        title: "Sobre Mí",
+        imageAlt: "Foto de perfil de Gregory Gonzalez Martinez",
+        description: [
+          "Desarrollador FullStack (Tecnólogo en Sistemas) con experiencia en la construcción de arquitecturas web escalables, diseño de APIs RESTful y creación de interfaces modernas. Especializado en Node.js (Express), Java (Spring), TypeScript, React y Vue, junto con el manejo de bases de datos relacionales (PostgreSQL, MySQL).",
+          "Destacado por liderar equipos frontend, desarrollar Design Systems, optimizar la comunicación cliente-servidor y depurar código legacy en entornos de alto impacto. Me desenvuelvo donde la precisión técnica se encuentra con la resolución creativa de problemas.",
+        ],
+        cv: {
+          text: "Descargar CV",
+          ariaLabel: "Descargar Currículum Vitae en formato PDF",
+          srDetail: "(Archivo PDF, aproximadamente 150 KB)",
+        },
+        skills: {
+          title: "Arsenal Técnico",
+          label: "Lista de habilidades técnicas",
+        },
+        education: {
+          title: "Educación",
+          items: [
+            {
+              degree: "Tecnología en Sistemas de Información",
+              school: "Universidad del Valle",
+              year: "2018 - 2023",
+            },
+          ],
+        },
+        interests: {
+          title: "Certificaciones",
+          items: [
+            { emoji: "🎓", name: "Meta Front-End Developer" },
+            { emoji: "🟢", name: "Node & Express Essentials - IBM" },
+            { emoji: "⚛️", name: "Front-End Apps with React - IBM" },
+            { emoji: "🐍", name: "Python - University of Michigan" },
+            { emoji: "📜", name: "JavaScript Essentials - IBM" },
+            { emoji: "🔄", name: "Scrum Fundamentals Certified" },
+          ],
+        },
       },
       a11y: {
         skipToContent: "Saltar al contenido principal",
