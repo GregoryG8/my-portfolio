@@ -103,58 +103,6 @@
 }
 
 /* ============================================
-   CV Download CTA
-   ============================================ */
-
-.about-me__cta {
-  display: flex;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #f0f0f0;
-}
-
-.about-me__cv-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  min-height: 52px;
-  min-width: 200px;
-  font-size: 1rem;
-  font-weight: 700;
-  font-family: inherit;
-  color: #ffffff;
-  background: var(--secondary-color);
-  border-radius: 12px;
-  text-decoration: none;
-  letter-spacing: 0.01em;
-  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-.about-me__cv-link:hover {
-  background: var(--secondary-hover-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(24, 39, 83, 0.2);
-}
-
-.about-me__cv-link:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(24, 39, 83, 0.15);
-}
-
-.about-me__cv-link:focus-visible {
-  outline: 3px solid var(--primary-color);
-  outline-offset: 4px;
-  transform: translateY(-2px);
-}
-
-.about-me__cv-icon {
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-
-/* ============================================
    Technical Arsenal - Skill Tags with Icons
    ============================================ */
 

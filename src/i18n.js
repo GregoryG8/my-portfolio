@@ -22,6 +22,11 @@ const resources = {
         experience: "Experience",
         projects: "Projects",
         contact: "Contact me",
+        cv: {
+          text: "Resume",
+          ariaLabel: "Download Resume in PDF format",
+          srDetail: "(PDF file, approximately 150 KB)",
+        },
       },
       footer: {
         label: "Site footer",
@@ -70,11 +75,6 @@ const resources = {
           "FullStack Developer (Systems Technologist) with experience building scalable web architectures, designing RESTful APIs, and creating modern interfaces. Specialized in Node.js (Express), Java (Spring), TypeScript, React, and Vue, along with relational database management (PostgreSQL, MySQL).",
           "Known for leading frontend teams, developing Design Systems, optimizing client-server communication, and debugging legacy code in high-impact environments. I thrive where technical precision meets creative problem-solving.",
         ],
-        cv: {
-          text: "Download CV",
-          ariaLabel: "Download Curriculum Vitae in PDF format",
-          srDetail: "(PDF file, approximately 150 KB)",
-        },
         skills: {
           title: "Technical Arsenal",
           label: "List of technical skills",
@@ -128,6 +128,11 @@ const resources = {
         experience: "Experiencia",
         projects: "Proyectos",
         contact: "Contáctame",
+        cv: {
+          text: "CV",
+          ariaLabel: "Descargar Currículum Vitae en formato PDF",
+          srDetail: "(Archivo PDF, aproximadamente 150 KB)",
+        },
       },
       footer: {
         label: "Pie de página",
@@ -176,11 +181,6 @@ const resources = {
           "Desarrollador FullStack (Tecnólogo en Sistemas) con experiencia en la construcción de arquitecturas web escalables, diseño de APIs RESTful y creación de interfaces modernas. Especializado en Node.js (Express), Java (Spring), TypeScript, React y Vue, junto con el manejo de bases de datos relacionales (PostgreSQL, MySQL).",
           "Destacado por liderar equipos frontend, desarrollar Design Systems, optimizar la comunicación cliente-servidor y depurar código legacy en entornos de alto impacto. Me desenvuelvo donde la precisión técnica se encuentra con la resolución creativa de problemas.",
         ],
-        cv: {
-          text: "Descargar CV",
-          ariaLabel: "Descargar Currículum Vitae en formato PDF",
-          srDetail: "(Archivo PDF, aproximadamente 150 KB)",
-        },
         skills: {
           title: "Arsenal Técnico",
           label: "Lista de habilidades técnicas",
