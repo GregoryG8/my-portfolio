@@ -15,13 +15,28 @@ exports.handler = async (event) => {
     if (!name || !email || !message) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ message: "Faltan campos requeridos: name, email, message" }),
+        body: JSON.stringify({
+          success: false,
+          message: "Faltan campos requeridos: name, email, message",
+        }),
+      };
+    }
+
+    // Validate env vars exist
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error("Missing EMAIL_USER or EMAIL_PASS environment variables");
+      return {
+        statusCode: 500,
+        body: JSON.stringify({
+          success: false,
+          message: "Server configuration error.",
+        }),
       };
     }
 
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST || "smtp.gmail.com",
-      port: process.env.EMAIL_PORT || 465,
+      port: parseInt(process.env.EMAIL_PORT || "465", 10),
       secure: true,
       auth: {
         user: process.env.EMAIL_USER,
@@ -36,32 +51,45 @@ exports.handler = async (event) => {
       text: `Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${message}`,
     };
 
-    const emailPromise = transporter.sendMail(mailOptions);
+    // Send email
+    await transporter.sendMail(mailOptions);
 
-    const telegramText = `*Nuevo Contacto*\n\n*Nombre:* ${name}\n*Correo:* ${email}\n*Mensaje:*\n${message}`;
-    const telegramUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
-    
-    const telegramPromise = fetch(telegramUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: process.env.TELEGRAM_CHAT_ID,
-        text: telegramText,
-        parse_mode: "Markdown",
-      }),
-    });
+    // Send Telegram notification (non-blocking, don't fail if Telegram fails)
+    if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
+      try {
+        const telegramText = `*Nuevo Contacto*\n\n*Nombre:* ${name}\n*Correo:* ${email}\n*Mensaje:*\n${message}`;
+        const telegramUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-    await Promise.all([emailPromise, telegramPromise]);
+        await fetch(telegramUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: process.env.TELEGRAM_CHAT_ID,
+            text: telegramText,
+            parse_mode: "Markdown",
+          }),
+        });
+      } catch (telegramError) {
+        console.warn("Telegram notification failed:", telegramError.message);
+      }
+    }
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true, message: "Mensaje procesado correctamente." }),
+      body: JSON.stringify({
+        success: true,
+        message: "Mensaje procesado correctamente.",
+      }),
     };
   } catch (error) {
-    console.error("Error al procesar la solicitud de contacto:", error);
+    console.error("Error in contact function:", error.message, error.stack);
     return {
       statusCode: 500,
-      body: JSON.stringify({ success: false, message: "Error interno del servidor." }),
+      body: JSON.stringify({
+        success: false,
+        message: "Error interno del servidor.",
+        debug: process.env.NODE_ENV !== "production" ? error.message : undefined,
+      }),
     };
   }
 };
