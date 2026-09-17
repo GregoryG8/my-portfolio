@@ -134,6 +134,47 @@
 }
 
 /* ============================================
+   Social Icon Buttons
+   ============================================ */
+
+.navbar-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--secondary-color);
+  background: transparent;
+  border: 2px solid var(--secondary-color);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar-social__link:hover {
+  background: var(--secondary-color);
+  color: #ffffff;
+}
+
+.navbar-social__link:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Action group that lives inside the mobile dropdown menu.
+   Hidden on desktop; overrides the generic `.navigation li { display: flex }`. */
+.navigation li.navbar-menu-actions {
+  display: none;
+}
+
+/* ============================================
    Hamburger Button
    ============================================ */
 
@@ -182,6 +223,12 @@
     align-items: center;
   }
 
+  /* Tighten spacing so all icon buttons fit on the bar */
+  .navbar-actions {
+    gap: 0.4rem;
+  }
+
+  /* CV becomes a compact circular icon button on the bar */
   .navbar-resume {
     padding: 0.5rem;
     min-height: 44px;
@@ -190,6 +237,17 @@
   }
 
   .navbar-resume__text {
+    display: none;
+  }
+
+  /* Keep the social icons visible on the bar (not in the menu) */
+  .navbar-social--desktop {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  /* The dropdown menu holds only the navigation links */
+  .navigation li.navbar-menu-actions {
     display: none;
   }
 
@@ -230,12 +288,26 @@
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 0.75rem;
   }
 
   .logo-navbar .spider-icon {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Shrink action buttons so they all fit on narrow screens */
+  .navbar-actions {
+    gap: 0.3rem;
+  }
+
+  .navbar-resume,
+  .navbar-social__link {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1rem;
   }
 }
 

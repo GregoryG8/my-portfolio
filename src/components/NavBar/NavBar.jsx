@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Divide as Hamburger } from "hamburger-react";
 import { useGlitch } from "react-powerglitch";
-import { FaSpider } from "react-icons/fa";
+import { FaSpider, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 
@@ -21,6 +21,9 @@ const NavBar = () => {
   const cvDownload = isSpanish
     ? "CV_Gregory_Gonzalez_ES.pdf"
     : "CV_Gregory_Gonzalez_EN.pdf";
+
+  const GITHUB_URL = "https://github.com/GregoryGonzalez";
+  const LINKEDIN_URL = "https://www.linkedin.com/in/gregory-gonzalez";
 
   const glitch = useGlitch({
     playMode: "hover",
@@ -99,7 +102,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link className="navbar-item" to="/" onClick={() => setIsMenuOpen(false)}>
+          <Link className="navbar-item" to="/experience" onClick={() => setIsMenuOpen(false)}>
             {t("nav.experience")}
           </Link>
         </li>
@@ -116,6 +119,28 @@ const NavBar = () => {
       </ul>
 
       <div className="navbar-actions">
+        {/* Social icons - visible on the bar across all breakpoints */}
+        <div className="navbar-social navbar-social--desktop">
+          <a
+            href={GITHUB_URL}
+            className="navbar-social__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("nav.social.github")}
+          >
+            <FaGithub aria-hidden="true" focusable="false" />
+          </a>
+          <a
+            href={LINKEDIN_URL}
+            className="navbar-social__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("nav.social.linkedin")}
+          >
+            <FaLinkedinIn aria-hidden="true" focusable="false" />
+          </a>
+        </div>
+
         <a
           ref={resumeGlitch.ref}
           href={cvHref}
