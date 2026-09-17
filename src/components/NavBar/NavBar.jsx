@@ -107,7 +107,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link className="navbar-item" to="/" onClick={() => setIsMenuOpen(false)}>
+          <Link className="navbar-item" to="/projects" onClick={() => setIsMenuOpen(false)}>
             {t("nav.projects")}
           </Link>
         </li>

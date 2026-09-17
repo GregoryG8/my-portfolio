@@ -51,6 +51,29 @@ const resources = {
           },
         ],
       },
+      projects: {
+        sectionLabel: "Featured projects section",
+        title: "Featured Projects",
+        subtitle:
+          "A selection of projects where I combine cloud architecture, scalable systems, and full stack development.",
+        techLabel: "Technologies used",
+        demo: "View Demo",
+        code: "Source Code",
+        demoAria: "View the demo of the {{name}} project (opens in a new tab)",
+        codeAria: "View the source code of the {{name}} project on GitHub (opens in a new tab)",
+        items: [
+          {
+            title: "E-Commerce Monorepo Architecture",
+            description:
+              "Mobile and web application structured in a monorepo using Turborepo. Integration of serverless backend microservices dispatched via S3 events.",
+          },
+          {
+            title: "Transactional Inventory API",
+            description:
+              "High-performance backend system designed for atomic inventory operations, optimized for minimal latency and eventual consistency.",
+          },
+        ],
+      },
       nav: {
         mainNavigation: "Main navigation",
         goToHome: "Go to home",
@@ -70,6 +93,7 @@ const resources = {
       },
       footer: {
         label: "Site footer",
+        cta: "Ready to scale your next project? Let's talk.",
         text: "By Gregory Gonzalez © 2026.",
       },
       contact: {
@@ -118,6 +142,11 @@ const resources = {
         skills: {
           title: "Technical Arsenal",
           label: "List of technical skills",
+          categories: {
+            backend: "Backend & Cloud",
+            frontend: "Frontend & Mobile",
+            devops: "Architecture & DevOps",
+          },
         },
         education: {
           title: "Education",
@@ -203,6 +232,29 @@ const resources = {
           },
         ],
       },
+      projects: {
+        sectionLabel: "Sección de proyectos destacados",
+        title: "Proyectos Destacados",
+        subtitle:
+          "Una selección de proyectos donde combino arquitectura cloud, sistemas escalables y desarrollo full stack.",
+        techLabel: "Tecnologías utilizadas",
+        demo: "Ver Demo",
+        code: "Código Fuente",
+        demoAria: "Ver la demo del proyecto {{name}} (se abre en una pestaña nueva)",
+        codeAria: "Ver el código fuente del proyecto {{name}} en GitHub (se abre en una pestaña nueva)",
+        items: [
+          {
+            title: "Arquitectura Monorepo para E-Commerce",
+            description:
+              "Aplicación móvil y web estructurada en un monorepo utilizando Turborepo. Integración de microservicios backend serverless despachados mediante eventos de S3.",
+          },
+          {
+            title: "API Transaccional de Inventario",
+            description:
+              "Sistema de backend de alto rendimiento diseñado para operaciones atómicas de inventario, optimizado para latencia mínima y consistencia eventual.",
+          },
+        ],
+      },
       nav: {
         mainNavigation: "Navegación principal",
         goToHome: "Ir al inicio",
@@ -222,6 +274,7 @@ const resources = {
       },
       footer: {
         label: "Pie de página",
+        cta: "¿Listo para escalar tu próximo proyecto? Hablemos.",
         text: "Hecho por Gregory Gonzalez © 2026.",
       },
       contact: {
@@ -270,6 +323,11 @@ const resources = {
         skills: {
           title: "Arsenal Técnico",
           label: "Lista de habilidades técnicas",
+          categories: {
+            backend: "Backend & Cloud",
+            frontend: "Frontend & Móvil",
+            devops: "Arquitectura & DevOps",
+          },
         },
         education: {
           title: "Educación",
