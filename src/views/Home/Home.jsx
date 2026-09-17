@@ -102,6 +102,10 @@ const Home = () => {
           aria-hidden="true"
         />
         <div className="text-container">
+          <span className="home-badge">
+            <span className="home-badge__dot" aria-hidden="true" />
+            {t("home.badge")}
+          </span>
           <h1 className="text-title">
             <Typed
               strings={[t("home.title")]}

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useTranslation } from "react-i18next";
-import { FiUser, FiCode } from "react-icons/fi";
+import { FiUser, FiCode, FiExternalLink } from "react-icons/fi";
 import { FiBookOpen, FiAward } from "react-icons/fi";
 import {
   SiReact,
@@ -54,6 +54,36 @@ const AboutMe = () => {
 
   const education = t("aboutMe.education.items", { returnObjects: true });
   const interests = t("aboutMe.interests.items", { returnObjects: true });
+
+  // Credly verified badges (fetched via the Netlify serverless proxy)
+  const [badges, setBadges] = useState([]);
+  const [badgesStatus, setBadgesStatus] = useState("loading"); // loading | ready | error
+
+  useEffect(() => {
+    let isActive = true;
+
+    const loadBadges = async () => {
+      try {
+        const res = await fetch("/.netlify/functions/credly");
+        const data = await res.json();
+        if (!isActive) return;
+
+        if (data?.success && Array.isArray(data.badges) && data.badges.length) {
+          setBadges(data.badges);
+          setBadgesStatus("ready");
+        } else {
+          setBadgesStatus("error");
+        }
+      } catch (err) {
+        if (isActive) setBadgesStatus("error");
+      }
+    };
+
+    loadBadges();
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   return (
     <section className="about-me" aria-label={t("aboutMe.sectionLabel")}>
@@ -149,6 +179,57 @@ const AboutMe = () => {
             </div>
           </div>
         </div>
+
+        {/* Verified Badges (Credly) */}
+        {badgesStatus !== "error" && (
+          <div className="about-me__card">
+            <header className="about-me__header">
+              <FiAward className="about-me__header-icon" aria-hidden="true" />
+              <h2 className="about-me__title">{t("aboutMe.badges.title")}</h2>
+            </header>
+
+            {badgesStatus === "loading" ? (
+              <p className="about-me__badges-status" role="status">
+                {t("aboutMe.badges.loading")}
+              </p>
+            ) : (
+              <ul
+                className="about-me__badges-grid"
+                aria-label={t("aboutMe.badges.title")}
+              >
+                {badges.map((badge) => (
+                  <li key={badge.id} className="about-me__badge-card">
+                    <a
+                      href={badge.url}
+                      className="about-me__badge-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={t("aboutMe.badges.verifyAria", {
+                        name: badge.name,
+                      })}
+                    >
+                      {badge.imageUrl && (
+                        <img
+                          src={badge.imageUrl}
+                          alt={badge.name}
+                          className="about-me__badge-image"
+                          loading="lazy"
+                          width="88"
+                          height="88"
+                        />
+                      )}
+                      <span className="about-me__badge-name">{badge.name}</span>
+                      <span className="about-me__badge-verify">
+                        <FiExternalLink aria-hidden="true" focusable="false" />
+                        {t("aboutMe.badges.verify")}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
