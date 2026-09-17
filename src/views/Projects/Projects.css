@@ -62,11 +62,19 @@
 
 .projects__grid {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop */
+  /* Auto-fit: fills up to 2 columns; a single card stays centered and
+     doesn't stretch across the whole row. Scales cleanly as more are added. */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 480px));
+  justify-content: center;
   gap: 2rem;
+}
+
+/* When there's a single project, keep the card at a comfortable width */
+.projects__grid:has(> .projects__card:only-child) {
+  grid-template-columns: minmax(320px, 520px);
 }
 
 /* ============================================
@@ -96,7 +104,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 21 / 9; /* wider, less vertical weight */
   background: linear-gradient(135deg, #dcebfd 0%, #eff6ff 60%, #ffffff 100%);
   border-bottom: 1px solid rgba(24, 39, 83, 0.06);
 }
@@ -167,8 +175,13 @@
 
 .projects__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: auto; /* pin to the bottom of the card */
+}
+
+.projects__link {
+  flex: 1 1 auto; /* let links share the row and wrap gracefully */
 }
 
 .projects__link {
@@ -213,13 +226,21 @@
   outline-offset: 3px;
 }
 
+/* Placeholder link (URL not available yet) */
+.projects__link--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* ============================================
    Responsive - Tablet (max 900px)
    ============================================ */
 
 @media (max-width: 900px) {
-  .projects__grid {
-    grid-template-columns: 1fr; /* single column */
+  .projects__grid,
+  .projects__grid:has(> .projects__card:only-child) {
+    grid-template-columns: minmax(0, 520px); /* single, centered column */
     gap: 1.5rem;
   }
 }

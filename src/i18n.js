@@ -59,18 +59,16 @@ const resources = {
         techLabel: "Technologies used",
         demo: "View Demo",
         code: "Source Code",
+        repoFrontend: "Frontend Repo",
+        repoBackend: "Backend / Lambdas",
+        comingSoon: "Coming soon",
         demoAria: "View the demo of the {{name}} project (opens in a new tab)",
         codeAria: "View the source code of the {{name}} project on GitHub (opens in a new tab)",
         items: [
           {
-            title: "E-Commerce Monorepo Architecture",
+            title: "ShareLoom 🔐 — Zero-Knowledge & Serverless File Transfer",
             description:
-              "Mobile and web application structured in a monorepo using Turborepo. Integration of serverless backend microservices dispatched via S3 events.",
-          },
-          {
-            title: "Transactional Inventory API",
-            description:
-              "High-performance backend system designed for atomic inventory operations, optimized for minimal latency and eventual consistency.",
+              "File transfer platform with client-side End-to-End encryption (AES-256-GCM) and a decoupled $0-cost serverless architecture. It guarantees atomic single-use links and automatic expiration without ever storing decryption keys in the cloud. Client-side encryption uses the native Web Crypto API before data leaves the browser, a multi-repo architecture fully decouples the presentation layer from the serverless logic, and access relies on short-lived S3 pre-signed URLs with atomic TTL-based expiration in DynamoDB.",
           },
         ],
       },
@@ -240,18 +238,16 @@ const resources = {
         techLabel: "Tecnologías utilizadas",
         demo: "Ver Demo",
         code: "Código Fuente",
+        repoFrontend: "Repo Frontend",
+        repoBackend: "Repo Backend / Lambdas",
+        comingSoon: "Próximamente",
         demoAria: "Ver la demo del proyecto {{name}} (se abre en una pestaña nueva)",
         codeAria: "Ver el código fuente del proyecto {{name}} en GitHub (se abre en una pestaña nueva)",
         items: [
           {
-            title: "Arquitectura Monorepo para E-Commerce",
+            title: "ShareLoom 🔐 — Transferencia de Archivos Zero-Knowledge & Serverless",
             description:
-              "Aplicación móvil y web estructurada en un monorepo utilizando Turborepo. Integración de microservicios backend serverless despachados mediante eventos de S3.",
-          },
-          {
-            title: "API Transaccional de Inventario",
-            description:
-              "Sistema de backend de alto rendimiento diseñado para operaciones atómicas de inventario, optimizado para latencia mínima y consistencia eventual.",
+              "Plataforma de transferencia de archivos con cifrado End-to-End en el cliente (AES-256-GCM) y arquitectura Serverless desacoplada de costo $0. Garantiza enlaces atómicos de un solo uso y caducidad automática sin almacenar llaves de descifrado en la nube. El cifrado en cliente usa la Web Crypto API nativa antes de transmitir datos a la red, una arquitectura multirrepositorio desacopla por completo la capa de presentación de la lógica Serverless, y el acceso se realiza mediante Pre-signed URLs de corta duración en S3 con expiración atómica por TTL en DynamoDB.",
           },
         ],
       },

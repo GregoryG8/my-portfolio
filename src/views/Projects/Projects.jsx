@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { FiExternalLink, FiGithub, FiFolder } from "react-icons/fi";
-import { FaAws } from "react-icons/fa";
+import { FiExternalLink, FiGithub, FiFolder, FiZap } from "react-icons/fi";
 import {
   SiReact,
   SiExpo,
@@ -11,6 +10,9 @@ import {
   SiGo,
   SiAmazondynamodb,
   SiAmazonapigateway,
+  SiAngular,
+  SiAmazonaws,
+  SiTypescript,
 } from "react-icons/si";
 
 import "./Projects.css";
@@ -25,9 +27,26 @@ const TECH_META = {
   "Node.js": { icon: SiNodedotjs, color: "#339933" },
   "AWS Lambda": { icon: SiAwslambda, color: "#FF9900" },
   S3: { icon: SiAmazons3, color: "#569A31" },
+  "Amazon S3": { icon: SiAmazons3, color: "#569A31" },
   Go: { icon: SiGo, color: "#00ADD8" },
+  "Go (Golang)": { icon: SiGo, color: "#00ADD8" },
   "AWS DynamoDB": { icon: SiAmazondynamodb, color: "#4053D6" },
+  DynamoDB: { icon: SiAmazondynamodb, color: "#4053D6" },
   "API Gateway": { icon: SiAmazonapigateway, color: "#FF4F8B" },
+  Angular: { icon: SiAngular, color: "#DD0031" },
+  CloudFront: { icon: SiAmazonaws, color: "#8C4FFF" },
+  TypeScript: { icon: SiTypescript, color: "#3178C6" },
+};
+
+/**
+ * Icon per link type used in each project's `links` array.
+ * "primary" renders a filled button; others render as outlined buttons.
+ */
+const LINK_ICONS = {
+  demo: FiExternalLink,
+  frontend: FiGithub,
+  backend: FiZap,
+  code: FiGithub,
 };
 
 /**
@@ -37,16 +56,21 @@ const TECH_META = {
  */
 const PROJECTS = [
   {
-    id: "ecommerce-monorepo",
-    technologies: ["React Native", "Expo", "Node.js", "AWS Lambda", "S3"],
-    demoUrl: "#",
-    codeUrl: "#",
-  },
-  {
-    id: "inventory-api",
-    technologies: ["Go", "AWS DynamoDB", "API Gateway"],
-    demoUrl: "#",
-    codeUrl: "#",
+    id: "shareloom",
+    technologies: [
+      "Go (Golang)",
+      "AWS Lambda",
+      "Angular",
+      "DynamoDB",
+      "Amazon S3",
+      "CloudFront",
+      "TypeScript",
+    ],
+    links: [
+      { type: "demo", url: "https://www.linkedin.com/feed/update/urn:li:activity:7495872245085593600/", labelKey: "demo", primary: true },
+      { type: "frontend", url: "https://github.com/GregoryG8/shareloom-web", labelKey: "repoFrontend" },
+      { type: "backend", url: "https://github.com/GregoryG8/shareloom-lambda", labelKey: "repoBackend" },
+    ],
   },
 ];
 
@@ -102,30 +126,44 @@ const Projects = () => {
                 </ul>
 
                 <footer className="projects__actions">
-                  <a
-                    href={project.demoUrl}
-                    className="projects__link projects__link--primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t("projects.demoAria", {
-                      name: t(`projects.items.${index}.title`),
-                    })}
-                  >
-                    <FiExternalLink aria-hidden="true" focusable="false" />
-                    {t("projects.demo")}
-                  </a>
-                  <a
-                    href={project.codeUrl}
-                    className="projects__link projects__link--secondary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t("projects.codeAria", {
-                      name: t(`projects.items.${index}.title`),
-                    })}
-                  >
-                    <FiGithub aria-hidden="true" focusable="false" />
-                    {t("projects.code")}
-                  </a>
+                  {project.links.map((link) => {
+                    const LinkIcon = LINK_ICONS[link.type] || FiExternalLink;
+                    const projectName = t(`projects.items.${index}.title`);
+                    const label = t(`projects.${link.labelKey}`);
+                    // Treat "#" or empty URLs as not-yet-available placeholders.
+                    const isPlaceholder = !link.url || link.url === "#";
+                    const variant = link.primary
+                      ? "projects__link--primary"
+                      : "projects__link--secondary";
+
+                    if (isPlaceholder) {
+                      return (
+                        <span
+                          key={link.type}
+                          className={`projects__link ${variant} projects__link--disabled`}
+                          aria-disabled="true"
+                          title={t("projects.comingSoon")}
+                        >
+                          <LinkIcon aria-hidden="true" focusable="false" />
+                          {label}
+                        </span>
+                      );
+                    }
+
+                    return (
+                      <a
+                        key={link.type}
+                        href={link.url}
+                        className={`projects__link ${variant}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${label} — ${projectName}`}
+                      >
+                        <LinkIcon aria-hidden="true" focusable="false" />
+                        {label}
+                      </a>
+                    );
+                  })}
                 </footer>
               </div>
             </li>
