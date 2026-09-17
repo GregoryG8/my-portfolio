@@ -51,6 +51,27 @@ const resources = {
           },
         ],
       },
+      projects: {
+        sectionLabel: "Featured projects section",
+        title: "Featured Projects",
+        subtitle:
+          "A selection of projects where I combine cloud architecture, scalable systems, and full stack development.",
+        techLabel: "Technologies used",
+        demo: "View Demo",
+        code: "Source Code",
+        repoFrontend: "Frontend Repo",
+        repoBackend: "Backend / Lambdas",
+        comingSoon: "Coming soon",
+        demoAria: "View the demo of the {{name}} project (opens in a new tab)",
+        codeAria: "View the source code of the {{name}} project on GitHub (opens in a new tab)",
+        items: [
+          {
+            title: "ShareLoom 🔐 — Zero-Knowledge & Serverless File Transfer",
+            description:
+              "File transfer platform with client-side End-to-End encryption (AES-256-GCM) and a decoupled $0-cost serverless architecture. It guarantees atomic single-use links and automatic expiration without ever storing decryption keys in the cloud. Client-side encryption uses the native Web Crypto API before data leaves the browser, a multi-repo architecture fully decouples the presentation layer from the serverless logic, and access relies on short-lived S3 pre-signed URLs with atomic TTL-based expiration in DynamoDB.",
+          },
+        ],
+      },
       nav: {
         mainNavigation: "Main navigation",
         goToHome: "Go to home",
@@ -70,6 +91,7 @@ const resources = {
       },
       footer: {
         label: "Site footer",
+        cta: "Ready to scale your next project? Let's talk.",
         text: "By Gregory Gonzalez © 2026.",
       },
       contact: {
@@ -118,6 +140,11 @@ const resources = {
         skills: {
           title: "Technical Arsenal",
           label: "List of technical skills",
+          categories: {
+            backend: "Backend & Cloud",
+            frontend: "Frontend & Mobile",
+            devops: "Architecture & DevOps",
+          },
         },
         education: {
           title: "Education",
@@ -203,6 +230,27 @@ const resources = {
           },
         ],
       },
+      projects: {
+        sectionLabel: "Sección de proyectos destacados",
+        title: "Proyectos Destacados",
+        subtitle:
+          "Una selección de proyectos donde combino arquitectura cloud, sistemas escalables y desarrollo full stack.",
+        techLabel: "Tecnologías utilizadas",
+        demo: "Ver Demo",
+        code: "Código Fuente",
+        repoFrontend: "Repo Frontend",
+        repoBackend: "Repo Backend / Lambdas",
+        comingSoon: "Próximamente",
+        demoAria: "Ver la demo del proyecto {{name}} (se abre en una pestaña nueva)",
+        codeAria: "Ver el código fuente del proyecto {{name}} en GitHub (se abre en una pestaña nueva)",
+        items: [
+          {
+            title: "ShareLoom 🔐 — Transferencia de Archivos Zero-Knowledge & Serverless",
+            description:
+              "Plataforma de transferencia de archivos con cifrado End-to-End en el cliente (AES-256-GCM) y arquitectura Serverless desacoplada de costo $0. Garantiza enlaces atómicos de un solo uso y caducidad automática sin almacenar llaves de descifrado en la nube. El cifrado en cliente usa la Web Crypto API nativa antes de transmitir datos a la red, una arquitectura multirrepositorio desacopla por completo la capa de presentación de la lógica Serverless, y el acceso se realiza mediante Pre-signed URLs de corta duración en S3 con expiración atómica por TTL en DynamoDB.",
+          },
+        ],
+      },
       nav: {
         mainNavigation: "Navegación principal",
         goToHome: "Ir al inicio",
@@ -222,6 +270,7 @@ const resources = {
       },
       footer: {
         label: "Pie de página",
+        cta: "¿Listo para escalar tu próximo proyecto? Hablemos.",
         text: "Hecho por Gregory Gonzalez © 2026.",
       },
       contact: {
@@ -270,6 +319,11 @@ const resources = {
         skills: {
           title: "Arsenal Técnico",
           label: "Lista de habilidades técnicas",
+          categories: {
+            backend: "Backend & Cloud",
+            frontend: "Frontend & Móvil",
+            devops: "Arquitectura & DevOps",
+          },
         },
         education: {
           title: "Educación",

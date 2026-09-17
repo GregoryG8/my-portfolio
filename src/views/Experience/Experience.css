@@ -257,11 +257,27 @@
 
   .experience__card-header {
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.6rem;
   }
 
   .experience__role {
     font-size: 1.25rem;
+  }
+
+  /* Let the long location + date wrap instead of overflowing the card */
+  .experience__date {
+    align-self: stretch;
+    align-items: flex-start;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.4;
+    border-radius: 12px;
+  }
+
+  .experience__date svg {
+    margin-top: 0.15rem;
+    flex-shrink: 0;
   }
 }
 
@@ -271,13 +287,18 @@
 
 @media (max-width: 480px) {
   .experience {
-    padding: 2rem 1rem;
-    --exp-gap: 0.9rem;
+    padding: 2rem 0.75rem;
+    --exp-node-size: 36px;
+    --exp-gap: 0.75rem;
   }
 
   /* Pull the timeline tight to the left edge */
   .experience__timeline::before {
     left: calc(var(--exp-node-size) / 2);
+  }
+
+  .experience__entry {
+    padding-bottom: 2rem;
   }
 
   .experience__title {
@@ -290,6 +311,26 @@
 
   .experience__card {
     padding: 1.25rem 1rem;
+  }
+
+  .experience__node-icon {
+    font-size: 1.1rem;
+  }
+
+  .experience__role {
+    font-size: 1.15rem;
+  }
+
+  .experience__date {
+    font-size: 0.75rem;
+  }
+
+  .experience__summary {
+    font-size: 0.95rem;
+  }
+
+  .experience__achievement {
+    font-size: 0.9rem;
   }
 
   .experience__tech-badge {

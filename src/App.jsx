@@ -6,6 +6,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./views/Home/Home";
 import AboutMe from "./views/AboutMe/AboutMe";
 import Experience from "./views/Experience/Experience";
+import Projects from "./views/Projects/Projects";
 import ContactMe from "./views/ContactMe/ContactMe";
 
 const App = () => {
@@ -20,6 +21,9 @@ const App = () => {
         </Route>
         <Route path="/experience" element={<Layout />}>
           <Route index element={<Experience />} />
+        </Route>
+        <Route path="/projects" element={<Layout />}>
+          <Route index element={<Projects />} />
         </Route>
         <Route path="/contact" element={<Layout />}>
           <Route index element={<ContactMe />} />

@@ -15,6 +15,7 @@ import {
   SiTypescript,
   SiJavascript,
   SiHtml5,
+  SiGo,
 } from "react-icons/si";
 
 import "./Experience.css";
@@ -27,6 +28,7 @@ const TECH_META = {
   "Node.js": { icon: SiNodedotjs, color: "#339933" },
   Express: { icon: SiExpress, color: "#000000" },
   Java: { icon: FaJava, color: "#ED8B00" },
+  Go: { icon: SiGo, color: "#00ADD8" },
   Spring: { icon: SiSpring, color: "#6DB33F" },
   React: { icon: SiReact, color: "#61DAFB" },
   Vue: { icon: SiVuedotjs, color: "#4FC08D" },
@@ -50,13 +52,11 @@ const EXPERIENCES = [
     icon: FiBriefcase,
     technologies: [
       "Node.js",
-      "Express",
       "Java",
+      "Go",
       "Spring",
-      "React",
       "Vue",
       "PostgreSQL",
-      "MySQL",
       "Scrum",
     ],
   },

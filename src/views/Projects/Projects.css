@@ -1,0 +1,317 @@
+/* ============================================
+   Projects - Accent tokens
+   ============================================ */
+
+.projects {
+  --proj-accent: #0d9488; /* teal accent, matching Experience */
+}
+
+/* ============================================
+   Layout & Background
+   ============================================ */
+
+.projects {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: 3rem 2rem;
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #eff6ff 30%,
+    #dcebfd 50%,
+    #eff6ff 70%,
+    #ffffff 100%
+  );
+}
+
+.projects__wrapper {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* ============================================
+   Section Intro
+   ============================================ */
+
+.projects__intro {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.projects__title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 0.75rem;
+}
+
+.projects__subtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.75;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   Grid
+   ============================================ */
+
+.projects__grid {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  /* Auto-fit: fills up to 2 columns; a single card stays centered and
+     doesn't stretch across the whole row. Scales cleanly as more are added. */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 480px));
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* When there's a single project, keep the card at a comfortable width */
+.projects__grid:has(> .projects__card:only-child) {
+  grid-template-columns: minmax(320px, 520px);
+}
+
+/* ============================================
+   Project Card
+   ============================================ */
+
+.projects__card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(24, 39, 83, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.projects__card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary-color);
+  box-shadow: 0 16px 40px rgba(24, 39, 83, 0.12);
+}
+
+/* Visual placeholder / thumbnail */
+.projects__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 21 / 9; /* wider, less vertical weight */
+  background: linear-gradient(135deg, #dcebfd 0%, #eff6ff 60%, #ffffff 100%);
+  border-bottom: 1px solid rgba(24, 39, 83, 0.06);
+}
+
+.projects__thumb-icon {
+  font-size: 2.75rem;
+  color: var(--primary-color);
+  opacity: 0.65;
+}
+
+.projects__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.75rem;
+}
+
+.projects__name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 0.65rem;
+  line-height: 1.25;
+}
+
+.projects__description {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.85;
+}
+
+/* ============================================
+   Technology Badges (shared style with Experience)
+   ============================================ */
+
+.projects__tech-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.projects__tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+  background: #f1f5f9;
+  border: 1px solid rgba(24, 39, 83, 0.08);
+  border-radius: 8px;
+}
+
+.projects__tech-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Action Links (footer)
+   ============================================ */
+
+.projects__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto; /* pin to the bottom of the card */
+}
+
+.projects__link {
+  flex: 1 1 auto; /* let links share the row and wrap gracefully */
+}
+
+.projects__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.1rem;
+  min-height: 44px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.projects__link--primary {
+  color: #ffffff;
+  background: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+}
+
+.projects__link--primary:hover {
+  background: var(--secondary-hover-color);
+  border-color: var(--secondary-hover-color);
+}
+
+.projects__link--secondary {
+  color: var(--secondary-color);
+  background: transparent;
+  border: 2px solid var(--secondary-color);
+}
+
+.projects__link--secondary:hover {
+  background: var(--secondary-color);
+  color: #ffffff;
+}
+
+.projects__link:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Placeholder link (URL not available yet) */
+.projects__link--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   Responsive - Tablet (max 900px)
+   ============================================ */
+
+@media (max-width: 900px) {
+  .projects__grid,
+  .projects__grid:has(> .projects__card:only-child) {
+    grid-template-columns: minmax(0, 520px); /* single, centered column */
+    gap: 1.5rem;
+  }
+}
+
+/* ============================================
+   Responsive - Mobile (max 768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .projects__title {
+    font-size: 2.1rem;
+  }
+
+  .projects__body {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .projects__name {
+    font-size: 1.2rem;
+  }
+}
+
+/* ============================================
+   Responsive - Small phones (max 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 2rem 1rem;
+  }
+
+  .projects__title {
+    font-size: 1.85rem;
+  }
+
+  .projects__subtitle {
+    font-size: 1rem;
+  }
+
+  .projects__body {
+    padding: 1.25rem 1rem;
+  }
+
+  /* Stack the action links on very narrow screens */
+  .projects__actions {
+    flex-direction: column;
+  }
+
+  .projects__link {
+    width: 100%;
+  }
+
+  .projects__tech-badge {
+    font-size: 0.75rem;
+  }
+}
+
+/* ============================================
+   Reduced motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .projects__card {
+    transition: none;
+  }
+
+  .projects__card:hover {
+    transform: none;
+  }
+}

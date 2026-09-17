@@ -1,26 +1,46 @@
 import React, { useEffect, useState } from "react";
 
 import { useTranslation } from "react-i18next";
-import { FiUser, FiCode, FiExternalLink } from "react-icons/fi";
-import { FiBookOpen, FiAward } from "react-icons/fi";
 import {
-  SiReact,
-  SiTypescript,
-  SiJavascript,
+  FiUser,
+  FiCode,
+  FiExternalLink,
+  FiBookOpen,
+  FiAward,
+  FiServer,
+  FiSmartphone,
+  FiSettings,
+  FiRefreshCw,
+  FiBox,
+} from "react-icons/fi";
+import {
+  SiGo,
   SiNodedotjs,
   SiExpress,
   SiSpring,
-  SiVuedotjs,
-  SiAngular,
   SiPython,
+  SiAmazon,
+  SiAmazonaws,
+  SiAmazondynamodb,
+  SiAmazonapigateway,
+  SiAmazons3,
+  SiAwslambda,
   SiPostgresql,
   SiMysql,
-  SiGit,
-  SiAzuredevops,
-  SiFigma,
+  SiReact,
+  SiExpo,
+  SiVuedotjs,
+  SiAngular,
+  SiTypescript,
+  SiJavascript,
   SiHtml5,
   SiCss3,
-  SiAmazonaws,
+  SiReactquery,
+  SiFigma,
+  SiTurborepo,
+  SiGithubactions,
+  SiGit,
+  SiAzuredevops,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -28,25 +48,61 @@ import "./AboutMe.css";
 
 const profileImg = "/images/profile.jpg";
 
-const SKILLS = [
-  { name: "Java", icon: FaJava, color: "#ED8B00" },
-  { name: "Spring", icon: SiSpring, color: "#6DB33F" },
-  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-  { name: "Express", icon: SiExpress, color: "#000000" },
-  { name: "React", icon: SiReact, color: "#61DAFB" },
-  { name: "Vue", icon: SiVuedotjs, color: "#4FC08D" },
-  { name: "Angular", icon: SiAngular, color: "#DD0031" },
-  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-  { name: "Python", icon: SiPython, color: "#3776AB" },
-  { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
-  { name: "CSS3", icon: SiCss3, color: "#1572B6" },
-  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-  { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-  { name: "Git", icon: SiGit, color: "#F05032" },
-  { name: "Azure DevOps", icon: SiAzuredevops, color: "#0078D7" },
-  { name: "AWS", icon: SiAmazonaws, color: "#FF9900" },
-  { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+/**
+ * Technical arsenal grouped into 3 visual categories.
+ * Each category has a header icon; each skill keeps its brand icon + color.
+ */
+const SKILL_CATEGORIES = [
+  {
+    id: "backend",
+    icon: FiServer,
+    skills: [
+      { name: "Go", icon: SiGo, color: "#00ADD8" },
+      { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+      { name: "Express", icon: SiExpress, color: "#000000" },
+      { name: "Java", icon: FaJava, color: "#ED8B00" },
+      { name: "Spring", icon: SiSpring, color: "#6DB33F" },
+      { name: "Python", icon: SiPython, color: "#3776AB" },
+      { name: "AWS", icon: SiAmazon, color: "#FF9900" },
+      { name: "Lambda", icon: SiAwslambda, color: "#FF9900" },
+      { name: "DynamoDB", icon: SiAmazondynamodb, color: "#4053D6" },
+      { name: "API Gateway", icon: SiAmazonapigateway, color: "#FF4F8B" },
+      { name: "Amazon S3", icon: SiAmazons3, color: "#569A31" },
+      { name: "CloudFront", icon: SiAmazonaws, color: "#8C4FFF" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+    ],
+  },
+  {
+    id: "frontend",
+    icon: FiSmartphone,
+    skills: [
+      { name: "React", icon: SiReact, color: "#61DAFB" },
+      { name: "React Native", icon: SiReact, color: "#61DAFB" },
+      { name: "Expo", icon: SiExpo, color: "#000020" },
+      { name: "Vue", icon: SiVuedotjs, color: "#4FC08D" },
+      { name: "Angular", icon: SiAngular, color: "#DD0031" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
+      { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+      { name: "Zustand", icon: FiBox, color: "#443E38" },
+      { name: "TanStack Query", icon: SiReactquery, color: "#FF4154" },
+      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+    ],
+  },
+  {
+    id: "devops",
+    icon: FiSettings,
+    skills: [
+      { name: "Turborepo", icon: SiTurborepo, color: "#EF4444" },
+      { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
+      { name: "CI/CD", icon: FiRefreshCw, color: "#0d9488" },
+      { name: "Microservicios", icon: FiServer, color: "#6366F1" },
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "Azure DevOps", icon: SiAzuredevops, color: "#0078D7" },
+    ],
+  },
 ];
 
 const AboutMe = () => {
@@ -119,18 +175,43 @@ const AboutMe = () => {
             <h2 className="about-me__title">{t("aboutMe.skills.title")}</h2>
           </header>
 
-          <ul className="about-me__skills" aria-label={t("aboutMe.skills.label")}>
-            {SKILLS.map((skill) => (
-              <li key={skill.name} className="about-me__skill-tag">
-                <skill.icon
-                  className="about-me__skill-icon"
-                  style={{ color: skill.color }}
-                  aria-hidden="true"
-                />
-                {skill.name}
-              </li>
-            ))}
-          </ul>
+          <div className="about-me__skills-grid">
+            {SKILL_CATEGORIES.map((category) => {
+              const CategoryIcon = category.icon;
+
+              return (
+                <div key={category.id} className="about-me__skill-category">
+                  <header className="about-me__skill-category-header">
+                    <span
+                      className="about-me__skill-category-icon"
+                      aria-hidden="true"
+                    >
+                      <CategoryIcon />
+                    </span>
+                    <h3 className="about-me__skill-category-title">
+                      {t(`aboutMe.skills.categories.${category.id}`)}
+                    </h3>
+                  </header>
+
+                  <ul
+                    className="about-me__skills"
+                    aria-label={t(`aboutMe.skills.categories.${category.id}`)}
+                  >
+                    {category.skills.map((skill) => (
+                      <li key={skill.name} className="about-me__skill-tag">
+                        <skill.icon
+                          className="about-me__skill-icon"
+                          style={{ color: skill.color }}
+                          aria-hidden="true"
+                        />
+                        {skill.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Education & Interests Row */}
