@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "G. Gonzalez",
+  "name": "Gregory Gonzalez | Full Stack Developer",
+  "description": "Portfolio of Gregory Gonzalez, Full Stack Developer specialized in scalable systems, and web and mobile development.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#3f87f2",
+  "background_color": "#ffffff",
+  "lang": "en"
 }
